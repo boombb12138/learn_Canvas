@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        canvas {
+            background-color: rgba(255, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="tutorial" width="550" height="550">
+        该浏览器不支持canvas 请更新浏览器
+    </canvas>
+</body>
+<script>
+    window.onload = function () {
+        draw();
+    }
+    function draw() {
+        var canvas = document.getElementById("tutorial");
+        // 判断浏览器是否支持canvas
+        if (canvas.getContext) {
+            var ctx = canvas.getContext("2d")//拿到canvas的上下文
+            var image = new Image();
+            image.onload = function () {
+                ctx.drawImage(image, 0, 0, 150, 150);
+
+                ctx.beginPath();
+                ctx.moveTo(40, 100);
+                ctx.lineTo(60, 60);
+                ctx.lineTo(80, 80);
+                ctx.lineTo(90, 70);
+                ctx.stroke()
+            };
+            image.src = "../images/backdrop.png"
+        }
+    }
+</script>
+
+</html>

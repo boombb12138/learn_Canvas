@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        canvas {
+            background-color: rgba(255, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="tutorial" width="550" height="550">
+        该浏览器不支持canvas 请更新浏览器
+    </canvas>
+</body>
+<script>
+    window.onload = function () {
+        draw();
+    }
+    function draw() {
+        var canvas = document.getElementById("tutorial");
+        // 判断浏览器是否支持canvas
+        if (canvas.getContext) {
+            var ctx = canvas.getContext("2d")//拿到canvas的上下文
+
+            ctx.globalAlpha = 0.8;
+            // 2.在1个路径中绘制圆弧
+            ctx.beginPath()
+            ctx.strokeStyle = "rgba(255,0,0,0.3)";
+            ctx.arc(30, 30, 20, 0, Math.PI * 2);
+            ctx.rect(100, 100, 100, 50);
+            ctx.stroke()
+            // ctx.fillStyle = "orange";//属于绘图状态 需要在fill stroke函数前调用
+            // ctx.fill();
+
+            ctx.beginPath();
+            ctx.rect(100, 20, 40, 30)
+            ctx.strokeStyle = "red";
+            ctx.stroke()
+        }
+    }
+</script>
+
+</html>
